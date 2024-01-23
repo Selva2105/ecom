@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ProductLisingPage from "./pages/ProductLisingPage";
+import NotFound from "./pages/NotFound";
 
 function App() {
+
+  const activeUser = localStorage.getItem(('userLogged'));
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen">
+
+      <Routes>
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        {activeUser === 'true' && <Route path="/products" element={<ProductLisingPage />} />}
+
+        {/* Catch-all route for 404 */}
+        <Route path='*' element={<NotFound />} />
+
+      </Routes>
     </div>
   );
 }
