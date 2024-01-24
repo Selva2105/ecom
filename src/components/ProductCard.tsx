@@ -29,7 +29,7 @@ const ProductCard: React.FC<cardProps> = ({ id, title, price, description, categ
     return (
         <div className="" >
 
-            <div className="max-w-full md:max-w-[22rem] lg:max-w-[30rem] xl:max-w-[28rem] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-full md:max-w-[22rem] lg:max-w-[30rem] xl:max-w-[28.5rem] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
                 <div className='h-64 w-full'>
                     <img className="rounded-t-lg h-full w-full object-cover" src={image} alt="" />
@@ -42,7 +42,7 @@ const ProductCard: React.FC<cardProps> = ({ id, title, price, description, categ
                     </span>
 
                     <p>
-                        <h5 className="my-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{truncateText(title, 20)}</h5>
+                        <h5 className="my-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{truncateText(title, 25)}</h5>
                     </p>
 
                     <p className="mb-3 text-sm font-normal text-gray-700 dark:text-gray-400">{truncateText(description, 100)}</p>

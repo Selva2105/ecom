@@ -1,26 +1,37 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import ProductLisingPage from "./pages/ProductLisingPage";
 import NotFound from "./pages/NotFound";
+import Layout from "./Layout";
+import ProductLisingPage from "./pages/ProductLisingPage";
+import Home from "./pages/Home/Home";
+import Premium from "./pages/Premium";
 
 function App() {
+  const activeUser = localStorage.getItem('loggedUser');
+  const parsedUser = activeUser ? JSON.parse(activeUser) : null;
 
-  const activeUser = localStorage.getItem(('userLogged'));
   return (
-    <div className="min-h-screen">
+    <Layout>
+      <div className="min-h-screen">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />  
+          <Route path="/premium" element={<Premium />} />
 
-      <Routes>
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        {activeUser === 'true' && <Route path="/products" element={<ProductLisingPage />} />}
+          {parsedUser && parsedUser[0].userLogged === true ? (
+            <Route path="/products" element={<ProductLisingPage />} />
+          ) : (
+            <Route path="/products" element={<Navigate to="/login" />} />
+          )}
 
-        {/* Catch-all route for 404 */}
-        <Route path='*' element={<NotFound />} />
-
-      </Routes>
-    </div>
+          {/* Catch-all route for 404 */}
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </div>
+    </Layout>
   );
 }
 

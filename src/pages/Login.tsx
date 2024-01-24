@@ -32,8 +32,10 @@ const Login = () => {
 
             if (user) {
                 console.log('Login successful');
+
+                const loggedUser: any = [{ userLogged: true, ...data }];
                 setSuccessMessage("Hey chief, welcome back 🙋");
-                localStorage.setItem("userLogged", "true")
+                localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
 
                 // Redirect to the home page after successful login with a delay
                 setTimeout(() => {

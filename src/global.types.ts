@@ -30,3 +30,14 @@ export interface UserData {
   city: string;
   password: string;
 }
+
+export interface LinkProps {
+  label: string;
+  url: string;
+}
+
+export interface loggedUserData {
+  userName: string;
+  email: string;
+  userLogged: boolean;
+}

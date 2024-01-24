@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { RootState } from '../app/store';
 import { fetchProduct } from '../features/products/productSlice';
-import { Spinner } from 'flowbite-react';
+import { Spinner, Tabs } from 'flowbite-react';
 import ServerErrorPage from './ServerErrorPage';
 import ProductCard from '../components/ProductCard';
 import { cardProps } from '../global.types';
@@ -16,7 +16,7 @@ const ProductLisingPage = () => {
 
     const url = "https://fakestoreapi.com";
     const endpoint = "/products";
-    const query = "";
+    const query = "?limit=18";
 
     console.log((product));
 
@@ -36,6 +36,7 @@ const ProductLisingPage = () => {
     }, [dispatch, url])
 
     const uniqueCategories: string[] = Array.from(new Set(product.map(product => product.category)));
+    const categoryList = ['All', ...uniqueCategories]
 
     console.log(uniqueCategories);
 
@@ -49,11 +50,24 @@ const ProductLisingPage = () => {
                         </div>
                     ) :
                     (product.length > 0 &&
-                        <div className="flex flex-row flex-wrap justify-between gap-6 px-4 py-4">
-                            {product.map((data: cardProps, index: number) => (
-                                <ProductCard key={index} category={data.category} description={data.description} id={data.id} image={data.image} price={data.price} rating={data.rating} title={data.title} />
-                            ))}
-                        </div>
+                        <>
+                            <Tabs aria-label="Default tabs">
+                                {
+                                    categoryList.map((tabName: string, index: number) => (
+                                        <Tabs.Item key={index} active={index === 0} title={tabName} className='active:border-none active::outline-none focus:!ring-transparent'>
+                                            This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
+                                            Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+                                            control the content visibility and styling.
+                                        </Tabs.Item>
+                                    ))
+                                }
+                            </Tabs>
+                            <div className="flex flex-row flex-wrap justify-between gap-6 px-4 py-4">
+                                {product.map((data: cardProps, index: number) => (
+                                    <ProductCard key={index} category={data.category} description={data.description} id={data.id} image={data.image} price={data.price} rating={data.rating} title={data.title} />
+                                ))}
+                            </div>
+                        </>
                     )
             }
 
