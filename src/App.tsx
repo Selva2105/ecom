@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
@@ -21,11 +21,9 @@ function App() {
           <Route path="/premium" element={<Premium />} />
 
 
-          {parsedUser && parsedUser[0].userLogged === true ? (
+          {parsedUser && parsedUser[0].userLogged && (
             <Route path="/products" element={<ProductLisingPage />} />
-          ) : (
-            <Route path="/products" element={<Navigate to="/login" />} />
-          )}
+          ) }
 
           {/* Catch-all route for 404 */}
           <Route path='*' element={<NotFound />} />

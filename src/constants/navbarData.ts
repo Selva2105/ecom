@@ -12,7 +12,7 @@ export const navLinks: NavbarData = {
   links: [
     { label: "Home", url: "/" },
     { label: "Produts", url: "/products" },
-    { label: "Wishlist", url: "/wishlist" },
+    { label: "About us", url: "/aboutUs" },
     { label: "Support", url: "/support" },
   ],
 };

@@ -9,6 +9,8 @@ export interface cardProps {
     rate: number;
     count: number;
   };
+  quantity?: number;
+  totalPrice?: number;
 }
 
 export interface StateProps {

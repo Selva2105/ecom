@@ -38,7 +38,7 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ profile, options }) =
   };
   const handleSignOut = async () => {
     try {
-      localStorage.removeItemItem('userLogged');
+      localStorage.removeItem('loggedUser');
 
       setTimeout(() => {
         navigate('/')

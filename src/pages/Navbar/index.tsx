@@ -10,6 +10,8 @@ import { RiHeartFill } from "react-icons/ri";
 import { RiBookmark3Fill } from "react-icons/ri";
 import { RiShoppingCartFill } from "react-icons/ri";
 import ProfileDropdown from "../../components/shared/ProfileDropdown";
+import SideSlider from "../../components/shared/SideSlider";
+import CartSlider from "../CartSlider";
 
 
 const Navbar: React.FC<{}> = () => {
@@ -29,8 +31,8 @@ const Navbar: React.FC<{}> = () => {
     const parsedUser = activeUser ? JSON.parse(activeUser) : null;
 
     console.log();
-    
-    
+
+
     return (
         <>
             <nav className="w-full fixed top-0 z-10 p-4 xl:px-20 flex flex-row justify-between items-start md:items-center bg-white">
@@ -56,17 +58,24 @@ const Navbar: React.FC<{}> = () => {
                     <div id="btns-container" className='flex gap-8'>
 
                         {
-                            parsedUser[0].userLogged ?
-                                (
+                            parsedUser?.[0]?.userLogged ? (
+                                <div className="flex gap-8">
+                                    <SideSlider
+                                        setShowSlider={setShowSlider}
+                                        showSlider={showSlider}
+                                        icon={<RiShoppingCartFill className="w-6 h-6 text-black" />}
+                                        title='Your cart'
+                                        content={<CartSlider />}
+                                    />
                                     <ProfileDropdown profile={parsedUser[0].email} options={options} />
-                                )
-                                : (
-                                    <>
-                                        <Link className="rounded-full bg-purple-500 border border-purple-500 text-white px-4 py-1 hover:bg-transparent hover:text-purple-500 transition-all duration-300" to={'/login'} >Sign in</Link>
+                                </div>
+                            ) : (
+                                <>
+                                    <Link className="rounded-full bg-purple-500 border border-purple-500 text-white px-4 py-1 hover:bg-transparent hover:text-purple-500 transition-all duration-300" to={'/login'} >Sign in</Link>
 
-                                        <Link className="rounded-full border-purple-500 border bg-transparent text-purple-500 px-4 py-1 transition-all duration-300 hover:bg-purple-500 hover:text-white" to={'/signup'} >Signup</Link>
-                                    </>
-                                )
+                                    <Link className="rounded-full border-purple-500 border bg-transparent text-purple-500 px-4 py-1 transition-all duration-300 hover:bg-purple-500 hover:text-white" to={'/signup'} >Signup</Link>
+                                </>
+                            )
                         }
 
                     </div>

@@ -2,8 +2,13 @@ import React from 'react';
 import { RiShoppingCartFill } from "react-icons/ri";
 import { cardProps } from '../global.types';
 import { Button } from 'flowbite-react';
+import { useAppDispatch } from '../app/hooks';
+import { addToCart } from '../features/user/cartSlice';
 
 const ProductCard: React.FC<cardProps> = ({ id, title, price, description, category, image, rating }) => {
+
+    const dispatch = useAppDispatch()
+
     const renderStars = () => {
         const stars = [];
         for (let i = 0; i < Math.round(rating.rate); i++) {
@@ -26,13 +31,18 @@ const ProductCard: React.FC<cardProps> = ({ id, title, price, description, categ
         return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
     };
 
+    const handleAddToCart = () => {
+        // Dispatch the addToCart action with the product details
+        dispatch(addToCart({ id, title, price, description, category, image, rating }));
+    };
+
     return (
         <div className="" >
 
             <div className="max-w-full md:max-w-[22rem] lg:max-w-[30rem] xl:max-w-[28.5rem] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
                 <div className='h-64 w-full'>
-                    <img className="rounded-t-lg h-full w-full object-cover" src={image} alt="" />
+                    <img className="rounded-t-lg h-full w-full object-contain" src={image} alt="" />
                 </div>
 
                 <div className="p-5 h-64">
@@ -41,9 +51,7 @@ const ProductCard: React.FC<cardProps> = ({ id, title, price, description, categ
                         {category}
                     </span>
 
-                    <p>
-                        <h5 className="my-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{truncateText(title, 25)}</h5>
-                    </p>
+                    <h5 className="my-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{truncateText(title, 25)}</h5>
 
                     <p className="mb-3 text-sm font-normal text-gray-700 dark:text-gray-400">{truncateText(description, 100)}</p>
 
@@ -62,8 +70,8 @@ const ProductCard: React.FC<cardProps> = ({ id, title, price, description, categ
 
                     </div>
 
-                    <Button className='w-full bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800 py-2 f' gradientMonochrome="purple" type='submit' >
-                            <span className='flex flex-row items-center gap-4 '> Add  to cart <RiShoppingCartFill className='w-4 h-4' /></span>
+                    <Button onClick={handleAddToCart} className='w-full bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800 py-2 f' gradientMonochrome="purple" type='submit' >
+                        <span className='flex flex-row items-center gap-4 '> Add to cart <RiShoppingCartFill className='w-4 h-4' /></span>
                     </Button>
                 </div>
             </div>
