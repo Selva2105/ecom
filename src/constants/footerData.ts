@@ -8,13 +8,13 @@ import {
 import React from "react";
 import { LinkProps } from "../global.types";
 
-// Define an interface for the footer section
+// Define an interface for each section in the footer
 interface FooterSection {
   title: string;
   links: LinkProps[];
 }
 
-// Define the overall footer data interface
+// Define the overall structure of the footer data
 interface FooterData {
   aboutUs: FooterSection;
   customerService: FooterSection;
@@ -22,12 +22,14 @@ interface FooterData {
   socialMedia: FooterSection;
 }
 
+// Define the structure of social media links
 export interface FooterSocial {
   icon: React.ElementType;
   link: string;
   className?: string;
 }
 
+// Social media data with icons, links, and optional styles
 export const footerSocialData: FooterSocial[] = [
   {
     icon: RiFacebookBoxFill,
@@ -56,6 +58,7 @@ export const footerSocialData: FooterSocial[] = [
   },
 ];
 
+// Data structure for each section in the footer
 export const footerData: FooterData = {
   aboutUs: {
     title: "About Us",

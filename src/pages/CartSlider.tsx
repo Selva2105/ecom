@@ -77,7 +77,7 @@ const CartSlider = () => {
             </div>
 
             <div className="totalPrice fixed bottom-0 left-0 right-0 p-4 bg-white flex flex-row justify-between items-center">
-                <p className='text-lg font-semibold'>Total : ${total}</p>
+                <p className='text-lg font-semibold'>Total : ${total.toFixed(2)}</p>
                 <Link
                     to={''}
                     className=" w-max rounded-md px-4 text-base bg-purple-500 py-2 text-center font-semibold text-white shadow-sm hover:bg-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

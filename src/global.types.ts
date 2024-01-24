@@ -1,3 +1,5 @@
+import { Dispatch, ReactNode, SetStateAction } from "react";
+
 export interface cardProps {
   id: number;
   title: string;
@@ -38,8 +40,11 @@ export interface LinkProps {
   url: string;
 }
 
-export interface loggedUserData {
-  userName: string;
-  email: string;
-  userLogged: boolean;
+// Define the props for the SideSlider component
+export interface SideSliderProps {
+  showSlider: boolean;
+  setShowSlider: Dispatch<SetStateAction<boolean>>;
+  icon: ReactNode;
+  title: ReactNode;
+  content?: ReactNode;
 }
