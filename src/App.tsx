@@ -8,8 +8,6 @@ import Home from "./pages/Home/Home";
 import Premium from "./pages/Premium";
 
 function App() {
-  const activeUser = localStorage.getItem('loggedUser');
-  const parsedUser = activeUser ? JSON.parse(activeUser) : null;
 
   return (
     <Layout>
@@ -17,13 +15,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />  
+          <Route path="/signup" element={<Signup />} />
           <Route path="/premium" element={<Premium />} />
 
-
-          {parsedUser && parsedUser[0].userLogged && (
-            <Route path="/products" element={<ProductLisingPage />} />
-          ) }
+          <Route path="/products" element={<ProductLisingPage />} />
 
           {/* Catch-all route for 404 */}
           <Route path='*' element={<NotFound />} />

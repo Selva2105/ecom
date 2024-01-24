@@ -21,8 +21,6 @@ const SideSlider: React.FC<SideSliderProps> = ({ setShowSlider, showSlider, icon
     const cart = useAppSelector((state: RootState) => state.cart.cart);
 
     const cartLength = cart.length;
-    console.log("cartLength", cartLength);
-
 
     return (
         <>
@@ -38,7 +36,7 @@ const SideSlider: React.FC<SideSliderProps> = ({ setShowSlider, showSlider, icon
             <div
                 className={`fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300 ${showSlider ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             >
-                <div className={`fixed top-0 right-0 bottom-0  w-2/5 p-4 bg-white shadow-lg rounded-l-md transition-transform transform ease-in-out ${showSlider ? 'translate-x-0' : 'translate-x-full'}`}>
+                <div className={`fixed top-0 right-0 bottom-0 w-full md:w-3/4 lg:w-3/5 xl:w-2/5 p-4 bg-white shadow-lg rounded-l-md transition-transform transform ease-in-out ${showSlider ? 'translate-x-0' : 'translate-x-full'}`}>
 
                     <div className="flex justify-between flex-row items-center">
                         <h2 className='font-inter font-semibold text-base'>{title}</h2>

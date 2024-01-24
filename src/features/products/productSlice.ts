@@ -4,16 +4,8 @@ import axios from "axios";
 
 export const fetchProduct = createAsyncThunk(
   "products/fetchProducts",
-  async ({
-    url,
-    endpoint,
-    query,
-  }: {
-    url: string | undefined;
-    endpoint: string | undefined;
-    query: string | undefined;
-  }) => {
-    const response = await axios.get(`${url}${endpoint}${query}`);
+  async ({ url }: { url: string | undefined }) => {
+    const response = await axios.get(`${url}`);
     return response.data;
   }
 );

@@ -7,25 +7,20 @@ import ServerErrorPage from './ServerErrorPage';
 import ProductCard from '../components/ProductCard';
 import { cardProps } from '../global.types';
 
-const ProductLisingPage = () => {
+const ProductListingPage = () => {
 
     const dispatch = useAppDispatch();
     const product = useAppSelector((state: RootState) => state.products.product);
     const status = useAppSelector((state: RootState) => state.products.status);
     const error = useAppSelector((state: RootState) => state.products.error);
 
-    const url = "https://fakestoreapi.com";
-    const endpoint = "/products";
-    const query = "?limit=18";
-
-    console.log((product));
-
+    const url = "https://fakestoreapi.com/products?limit=18";
 
     useEffect(() => {
 
         const fetchData = async () => {
             try {
-                await dispatch(fetchProduct({ url, endpoint, query }));
+                await dispatch(fetchProduct({ url }));
             } catch (error) {
                 console.log(error);
             }
@@ -62,4 +57,4 @@ const ProductLisingPage = () => {
     )
 }
 
-export default ProductLisingPage
+export default ProductListingPage

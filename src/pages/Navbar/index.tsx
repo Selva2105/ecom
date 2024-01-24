@@ -28,10 +28,6 @@ const Navbar: React.FC<{}> = () => {
     ];
 
     const activeUser = localStorage.getItem('loggedUser');
-    const parsedUser = activeUser ? JSON.parse(activeUser) : null;
-
-    console.log();
-
 
     return (
         <>
@@ -58,7 +54,7 @@ const Navbar: React.FC<{}> = () => {
                     <div id="btns-container" className='flex gap-8'>
 
                         {
-                            parsedUser?.[0]?.userLogged ? (
+                            activeUser === "true" ? (
                                 <div className="flex gap-8">
                                     <SideSlider
                                         setShowSlider={setShowSlider}
@@ -67,7 +63,7 @@ const Navbar: React.FC<{}> = () => {
                                         title='Your cart'
                                         content={<CartSlider />}
                                     />
-                                    <ProfileDropdown profile={parsedUser[0].email} options={options} />
+                                    <ProfileDropdown options={options} />
                                 </div>
                             ) : (
                                 <>
@@ -81,7 +77,21 @@ const Navbar: React.FC<{}> = () => {
                     </div>
                 </div>
 
-                <div className="flex xl:hidden items-end">
+                <div className="flex xl:hidden gap-4 items-end">
+                    {
+                        activeUser === "true" &&
+                        <>
+                            <SideSlider
+                                setShowSlider={setShowSlider}
+                                showSlider={showSlider}
+                                icon={<RiShoppingCartFill className="w-6 h-6 text-black" />}
+                                title='Your cart'
+                                content={<CartSlider />}
+                            />
+
+                        </>
+                    }
+
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -96,6 +106,7 @@ const Navbar: React.FC<{}> = () => {
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                         />
                     </svg>
+
                 </div>
             </nav>
             {openNav && <MenuSlider openNav setOpenNav={setOpenNav} />}

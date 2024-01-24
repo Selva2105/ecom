@@ -3,6 +3,7 @@ import { navLinks } from '../../constants/navbarData';
 import NavItem from './NavItem';
 import { RiBookmark3Fill, RiHeartFill, RiShoppingBagFill, RiUser3Fill } from 'react-icons/ri';
 import ProfileDropdown from '../../components/shared/ProfileDropdown';
+import { Link } from 'react-router-dom';
 
 interface sliderProps {
     openNav: boolean;
@@ -18,6 +19,8 @@ const MenuSlider: React.FC<sliderProps> = ({ openNav, setOpenNav }) => {
         { label: 'Premium', action: '/premium', icon: <RiBookmark3Fill className="text-hunyadi_yellow-400" /> },
     ];
 
+    const activeUser = localStorage.getItem('loggedUser');
+
     return (
         <div
             className={`w-full fixed top-0 p-4 gap-4 xl:hidden flex flex-row items-start z-20 bg-white transition-transform ${openNav ? 'transform translate-x-0' : 'transform translate-x-full '
@@ -30,9 +33,19 @@ const MenuSlider: React.FC<sliderProps> = ({ openNav, setOpenNav }) => {
                     ))}
                 </div>
 
-                <div id="btns-container" className='flex gap-8'>
-                    <ProfileDropdown options={options}  profile='' />
-                </div>
+                {
+                    activeUser === "true" ? (
+                        <div className="flex gap-8">
+                            <ProfileDropdown options={options} />
+                        </div>
+                    ) : (
+                        <div className='w-full md:w-2/5 lg:w-1/4 flex md:justify-between justify-start gap-4'>
+                            <Link className="rounded-full bg-purple-500 border border-purple-500 text-white px-4 py-1 hover:bg-transparent hover:text-purple-500 transition-all duration-300" to={'/login'} >Sign in</Link>
+
+                            <Link className="rounded-full border-purple-500 border bg-transparent text-purple-500 px-4 py-1 transition-all duration-300 hover:bg-purple-500 hover:text-white" to={'/signup'} >Signup</Link>
+                        </div>
+                    )
+                }
             </div>
 
             <div className="closeSlider">

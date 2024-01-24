@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { RootState } from '../app/store';
 import { cardProps } from '../global.types';
 import { removeFromCart, updateQuantity } from '../features/user/cartSlice';
-import { Button, Select } from 'flowbite-react';
+import {  Select } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 
 const CartSlider = () => {
@@ -26,18 +26,16 @@ const CartSlider = () => {
 
     const total = cart.reduce((acc, item) => (item.totalPrice ? acc + item.totalPrice : acc), 0);
 
-    console.log("cart", cart);
-
     return (
         <div className='flex flex-col justify-between h-full'>
-            <div className='flex flex-col gap-4 overflow-y-auto' style={{ maxHeight: '555px' }}>
+            <div className='flex flex-col gap-4 overflow-y-auto max-h-[25rem]' style={{ maxHeight: '555px' }}>
 
                 {cart.length === 0 ? (<> No product in cart</>) : (
                     <>
                         {cart.map((data: cardProps, index: number) => (
                             <div className='font-inter flex flex-row border-2 rounded-md border-gray-300 justify-between w-full bg-white ' key={index}>
                                 <div className="w-2/5 h-44">
-                                    <img src={data.image} alt="" className='w-full h-full rounded-l-md object-contain object-left' />
+                                    <img src={data.image} alt="" className='w-full h-full rounded-l-md object-contain' />
                                 </div>
                                 <div className="w-full flex flex-col gap-2 p-4 justify-between">
                                     <h2 className='font-medium text-sm'>{data.title}</h2>

@@ -9,11 +9,10 @@ interface Option {
 }
 
 interface ProfileDropdownProps {
-  profile: string;
   options: Option[];
 }
 
-const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ profile, options }) => {
+const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ options }) => {
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const navigate = useNavigate()
@@ -41,16 +40,13 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ profile, options }) =
       localStorage.removeItem('loggedUser');
 
       setTimeout(() => {
-        navigate('/')
+        navigate('/products')
       }, 2500);
 
     } catch (error) {
       console.log(error);
     }
   };
-
-  console.log();
-
 
   return (
     <div className="relative font-inter" ref={dropdownRef}>

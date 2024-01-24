@@ -33,13 +33,12 @@ const Login = () => {
             if (user) {
                 console.log('Login successful');
 
-                const loggedUser: any = [{ userLogged: true, ...data }];
                 setSuccessMessage("Hey chief, welcome back 🙋");
-                localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+                localStorage.setItem("loggedUser", "true");
 
                 // Redirect to the home page after successful login with a delay
                 setTimeout(() => {
-                    navigate('/products');
+                    navigate('/');
                 }, 2000);
             } else {
                 setsuccessMessage("Hey chief, Invalid email or password ");
