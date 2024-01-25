@@ -276,6 +276,7 @@ const Signup: React.FC = () => {
                             </> :
                             'Sign up'}
                     </Button>
+                    
                 </form>
 
                 <p className='text-sm'>Already having an account ?<Link to={'/login'} className='text-purple-500'> login</Link></p>

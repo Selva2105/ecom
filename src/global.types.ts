@@ -1,5 +1,6 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
 
+// Interface for representing a cards
 export interface cardProps {
   id: number;
   title: string;
@@ -15,6 +16,7 @@ export interface cardProps {
   totalPrice?: number;
 }
 
+// Interface for representing a City
 export interface StateProps {
   value: string;
   displayValue: string;
