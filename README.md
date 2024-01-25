@@ -1,6 +1,6 @@
 # E-Commerce website
 
-Welcome to Eacom, a modern web application developed using React with TypeScript (TSX), Redux for state management, and styled with TailwindCSS along with Flowbite React components. This project aims to provide a seamless and responsive user experience, combining the power of React's component-based architecture, TypeScript's static typing, Redux for state management, and the utility-first styling of TailwindCSS with enhanced components from Flowbite.
+Welcome to Ecom, a modern web application developed using React with TypeScript (TSX), Redux for state management, and styled with TailwindCSS along with Flowbite React components. This project aims to provide a seamless and responsive user experience, combining the power of React's component-based architecture, TypeScript's static typing, Redux for state management, and the utility-first styling of TailwindCSS with enhanced components from Flowbite.
 
 ## Table of Contents
 
@@ -62,7 +62,6 @@ Before setting up and running the e-commerce React application, make sure you ha
 Follow these steps to get your project up and running:
 
 ### 1. Clone the Repository
-
 
 ```bash
 git clone https://github.com/Selva2105/ecom.git
